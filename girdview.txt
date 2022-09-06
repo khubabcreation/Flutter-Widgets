@@ -1,0 +1,116 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+          backgroundColor: Colors.lightBlue,
+          body: SafeArea(
+            child: CustomScrollView(slivers: [
+              SliverAppBar(
+                floating: true,
+                pinned: true,
+                snap: false,
+                expandedHeight: 300,
+                actions: [
+                  IconButton(
+                      onPressed: ShowMySnack,
+                      icon: Icon(Icons.arrow_back_ios_new_rounded))
+                ],
+                toolbarHeight: 100,
+                backgroundColor: Colors.tealAccent,
+                elevation: 30,
+                title: Text('Khubab Abbasi'),
+                flexibleSpace: Image.asset(
+                  'assets/image/orio.png',
+                ),
+              ),
+              SliverGrid.extent(
+                mainAxisSpacing: 20,
+                crossAxisSpacing: 20,
+                maxCrossAxisExtent: 200,
+                children: [
+                  Container(
+                    color: Colors.amber,
+                    height: 100,
+                    width: 100,
+                  ),
+                  Container(
+                    color: Colors.red,
+                    height: 50,
+                    width: 50,
+                  ),
+                  Container(
+                    color: Colors.green,
+                    height: 50,
+                    width: 50,
+                  ),
+                  Container(
+                    color: Colors.blue,
+                    height: 50,
+                    width: 50,
+                  ),
+                  Container(
+                    color: Colors.pink,
+                    height: 50,
+                    width: 50,
+                  ),
+                  Container(
+                    color: Colors.brown,
+                    height: 50,
+                    width: 50,
+                  ),
+                  Container(
+                    color: Colors.green,
+                    height: 50,
+                    width: 50,
+                  ),
+                ],
+              )
+            ]),
+          )),
+    );
+  }
+
+  void ShowMySnack() {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text('this is the snack wow'),
+      backgroundColor: Colors.red,
+      padding: EdgeInsets.all(30),
+      shape: BeveledRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10))),
+      elevation: 50,
+      duration: Duration(seconds: 1),
+    ));
+  }
+}
