@@ -1,0 +1,93 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int selection = 0;
+  @override
+  Widget build(BuildContext context) {
+    ScrollController scrollController = ScrollController();
+    return Scaffold(
+      appBar: AppBar(
+        leading: Icon(Icons.arrow_circle_left),
+        title: Text('Cas Developers'),
+        centerTitle: true,
+        actions: [Icon(Icons.accessible)],
+      ),
+      body: Container(
+        color: Colors.lightBlue,
+        child: Stack(
+          children: [
+            Image.asset(
+              'assets/image/food.png',
+              width: double.infinity,
+            ),
+            DraggableScrollableSheet(
+              initialChildSize: 0.2,
+              minChildSize: 0.13,
+              maxChildSize: 0.65,
+              builder: (context, scrollController) => Padding(
+                padding: EdgeInsets.all(10),
+                child: Container(
+                    color: Colors.grey,
+                    child: ListView.builder(
+                        controller: scrollController,
+                        itemCount: 20,
+                        itemBuilder: (context, index) => Expanded(
+                              child: Text(
+                                "Everyone should be serious about having good health. Our health decides our future. It is the basic need if you want to have a delightful life. There are many things that we should do to maintain a healthy life like exercise, meditation, diet and proper knowledge of disease, etc. Apart from 'what to do', it is also important to know 'what not to do' for a healthy life.",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 22),
+                              ),
+                            ))),
+              ),
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+          // showSelectedLabels: true,
+          // type: BottomNavigationBarType.shifting,
+          currentIndex: selection,
+          onTap: ((value) {
+            setState(() {
+              selection = value;
+            });
+          }),
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.settings), label: 'Settings'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.toll_outlined), label: 'Tools'),
+          ]),
+    );
+  }
+}

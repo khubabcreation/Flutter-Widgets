@@ -1,0 +1,238 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  List<int> myList = List.generate(100, (index) => index);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(widget.title),
+        ),
+        body: ListView.custom(
+            childrenDelegate: SliverChildBuilderDelegate(
+                (context, index) => ListTile(
+                    leading: CircleAvatar(
+                      child: Text(myList[index]a.toString()),
+                    ),
+                    title: Text(myList[index].toString())),
+                childCount: myList.length)));
+  }
+}
+/**
+ * 
+ * ListView.custom(
+            childrenDelegate: SliverChildListDelegate(const [
+          ListTile(
+            leading: CircleAvatar(
+              child: Text('1'),
+            ),
+            title: Text('Title'),
+            subtitle: Text('SubTitle'),
+            trailing: Text('Trainling'),
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              child: Text('2'),
+            ),
+            title: Text('Title'),
+            subtitle: Text('SubTitle'),
+            trailing: Text('Trainling'),
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              child: Text('3'),
+            ),
+            title: Text('Title'),
+            subtitle: Text('SubTitle'),
+            trailing: Text('Trainling'),
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              child: Text('4'),
+            ),
+            title: Text('Title'),
+            subtitle: Text('SubTitle'),
+            trailing: Text('Trainling'),
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              child: Text('5'),
+            ),
+            title: Text('Title'),
+            subtitle: Text('SubTitle'),
+            trailing: Text('Trainling'),
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              child: Text('6'),
+            ),
+            title: Text('Title'),
+            subtitle: Text('SubTitle'),
+            trailing: Text('Trainling'),
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              child: Text('7'),
+            ),
+            title: Text('Title'),
+            subtitle: Text('SubTitle'),
+            trailing: Text('Trainling'),
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              child: Text('8'),
+            ),
+            title: Text('Title'),
+            subtitle: Text('SubTitle'),
+            trailing: Text('Trainling'),
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              child: Text('9'),
+            ),
+            title: Text('Title'),
+            subtitle: Text('SubTitle'),
+            trailing: Text('Trainling'),
+          ),
+        ]))
+
+ * ListView.separated(
+            itemBuilder: (context, index) => ListTile(
+                leading: CircleAvatar(
+                  child: Text(myList[index].toString()),
+                ),
+                title: Text(myList[index].toString())),
+            separatorBuilder: (context, index) => const DecoratedBox(
+                decoration: BoxDecoration(
+                    border: Border(
+                        bottom: BorderSide(color: Colors.blue, width: 2)))),
+            itemCount: myList.length)
+
+ *  separatorBuilder: (context, index) {
+              if (index % 5 == 0) {
+                return const Center(
+                  child: Text('My Ad'),
+                );
+              }
+              return const SizedBox();
+            }
+ * Center(child: ListView.builder(
+        itemCount: myList.length,
+        itemBuilder: (context, index) {
+          print(index);
+          return Center(
+            child: Text(index.toString()),
+          );
+
+ * ListView.builder(
+          itemCount: myList.length,
+          itemBuilder: (context, index) => ListTile(
+              leading: CircleAvatar(
+                child: Text(myList[index].toString()),
+              ),
+              title: Text(myList[index].toString())),
+        ),
+ * ListView(children: const [
+          ListTile(
+            leading: CircleAvatar(
+              child: Text('1'),
+            ),
+            title: Text('Title'),
+            subtitle: Text('SubTitle'),
+            trailing: Text('Trainling'),
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              child: Text('2'),
+            ),
+            title: Text('Title'),
+            subtitle: Text('SubTitle'),
+            trailing: Text('Trainling'),
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              child: Text('3'),
+            ),
+            title: Text('Title'),
+            subtitle: Text('SubTitle'),
+            trailing: Text('Trainling'),
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              child: Text('4'),
+            ),
+            title: Text('Title'),
+            subtitle: Text('SubTitle'),
+            trailing: Text('Trainling'),
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              child: Text('5'),
+            ),
+            title: Text('Title'),
+            subtitle: Text('SubTitle'),
+            trailing: Text('Trainling'),
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              child: Text('6'),
+            ),
+            title: Text('Title'),
+            subtitle: Text('SubTitle'),
+            trailing: Text('Trainling'),
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              child: Text('7'),
+            ),
+            title: Text('Title'),
+            subtitle: Text('SubTitle'),
+            trailing: Text('Trainling'),
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              child: Text('8'),
+            ),
+            title: Text('Title'),
+            subtitle: Text('SubTitle'),
+            trailing: Text('Trainling'),
+          ),
+          ListTile(
+            leading: CircleAvatar(
+              child: Text('9'),
+            ),
+            title: Text('Title'),
+            subtitle: Text('SubTitle'),
+            trailing: Text('Trainling'),
+          ),
+        ]),
+ */

@@ -1,0 +1,33 @@
+  DraggableScrollableSheet(
+                initialChildSize: 0.5,
+                minChildSize: 0.13,
+                maxChildSize: 0.8,
+                builder: (context, scrollController) => Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Container(
+                      color: Colors.grey,
+                      child: ListView.builder(
+                          controller: scrollController,
+                          itemCount: 20,
+                          itemBuilder: (context, index) => Text(
+                                "Everyone should be serious about having good health. Our health decides our future. It is the basic need if you want to have a delightful life. There are many things that we should do to maintain a healthy life like exercise, meditation, diet and proper knowledge of disease, etc. Apart from 'what to do', it is also important to know 'what not to do' for a healthy life.",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 22),
+                              ))),
+                ),
+              ),
+
+
+
+
+
+  SliverList(
+            delegate: SliverChildBuilderDelegate(
+          childCount: 60,
+          (context, index) {
+            return ListTile(
+              leading: Icon(Icons.settings),
+              title: Text("Khubab"),
+            );
+          },
+        ))
